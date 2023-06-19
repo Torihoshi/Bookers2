@@ -6,12 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/299c07aee8.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
+    <a href="/", class="header-title">Bookers</a>
+
     <% if user_signed_in? %>
       <!--ログインしてる時 Home ／ Users ／ Books ／ Log out-->
       <li>
@@ -19,7 +22,7 @@
       </li>
 
       <li>
-        <%= link_to "Users", homes_top_path %>
+        <%= link_to "Users", user_path(current_user.id) %>
       </li>
 
       <li>
@@ -50,6 +53,13 @@
 
   </header>
 
-    <%= yield %>
+
+    <main>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
   </body>
 </html>
