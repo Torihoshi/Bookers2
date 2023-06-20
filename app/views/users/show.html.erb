@@ -1,1 +1,19 @@
-<h1>Userの投稿詳細</h1>
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<h1>User info</h1>
+
+<div>
+  <p>name</p>
+  <p><%= @user.name %></p>
+</div>
+
+<div>
+  <p>introduction</p>
+  <p></p>
+</div>
+
+<div>
+<%= link_to "AAAA", edit_user_path %>
+</div>
