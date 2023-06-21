@@ -1,7 +1,56 @@
 @use '~bootstrap/scss/bootstrap';
 
-.header-title {
+// Header
+.nav-bar-brand {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 400;
+  color: white;
+}
+.nav-bar-brand:link, .nav-bar-brand:visited, .nav-bar-brand:hover, .nav-bar-brand:active {
+  color: white;
+  text-decoration: none;
+}
 
+.navbar-toggler{
+  border-color: #ffffff;
+}
+
+
+// Body
+.container{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottm: 50px;
+}
+.btn-box {
+  text-align: center;
+}
+.btn {
+  width: 90%;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  transition: 0.5s;
+}
+.log-in {
+  background-color: #17a2b8;
+  margin-bottom: 16px;
+}
+.log-in:hover {
+  background-color: #217582;
+  color: white;
+}
+.sign-up {
+  background-color: #28a745;
+}
+.sign-up:hover {
+  background-color: #287a3b;
+  color: white;
+}
+
+// Footer
+footer {
+  margin: 0 auto;
+  text-align: center;
 }

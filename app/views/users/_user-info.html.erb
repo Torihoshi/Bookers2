@@ -1,5 +1,5 @@
-  <h1>User info(users/show.html)</h1>
-  <%= image_tag user.profile_image, size: "100x100" %>
+  <h1>User info</h1>
+  <%= image_tag user.get_profile_image(100,100) %>
 
   <div>
     <p>name</p>
@@ -16,3 +16,5 @@
       <%= link_to "edit", edit_user_path %>
     <% end %>
   </div>
+  
+  

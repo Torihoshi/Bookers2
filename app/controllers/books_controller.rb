@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 
   #データの一覧を表示する
   def index
-
+    @books = Book.all
   end
 
   #データの内容（詳細）を表示する
