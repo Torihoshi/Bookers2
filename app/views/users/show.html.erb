@@ -1,19 +1,11 @@
-<div>
+<div class="flash-message">
   <%= flash[:notice] %>
 </div>
 
-<h1>User info</h1>
-
-<div>
-  <p>name</p>
-  <p><%= @user.name %></p>
+<div class="user-info">
+  <%= render 'user-info', user: @user %>
 </div>
 
-<div>
-  <p>introduction</p>
-  <p></p>
-</div>
-
-<div>
-<%= link_to "AAAA", edit_user_path %>
+<div class="new-book">
+  <%= render 'new-book', book: @book %>
 </div>
