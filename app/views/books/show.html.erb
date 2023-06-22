@@ -1,1 +1,19 @@
-<h1>Show Book</h1>
+<!-- フラッシュメッセージ表示 -->
+<div>
+  <p class="notice"><%= flash[:notice] %></p>
+</div>
+
+<!-- 投稿詳細表示 -->
+<p class="detail-title">
+  <h1>Book detail(books/show.html)</h1>
+  <b>Title: </b><%= @book.title %>
+</p>
+
+<p class="edit-body">
+  <b>Body: </b><%= @book.body %>
+</p>
+
+<!-- リンク -->
+<%= link_to "Edit", edit_book_path(@book), class: "edit_link" %>
+|
+<%= link_to 'Destroy', destroy_book_path, method: :delete, "data-confirm" => "Are you sure?" %>
