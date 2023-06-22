@@ -1,15 +1,12 @@
-<h1>Books(books/index.html)</h1>
-<p>Title</p>
-<p>Opinion</p>
-
 <h1>(books/index.html)</h1>
 
-  <div class="user-info">
-    <h1>User info</h1>
-
-
+<!--ユーザー情報-->
+<div class="user-info">
+  <h1>User info</h1>
+  <p>ユーザー情報</p>
 </div>
 
+<!--新規投稿-->
 <div class="new-book">
   <h1>New Book</h1>
   <%= form_with model: @book, method: :GET do |f| %>
@@ -21,21 +18,32 @@
   <% end %>
 </div>
 
+<!--投稿一覧-->
 <div class="book-index">
-  <% @books.each do |book| %>
-    <div class="user-icon">
-      <p>User-icon</p>
-      <span>icon</span>
-    </div>
+  <h1>Books</h1>
+  <table class="book-table">
+    <tr>
+      <th>Icon</th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
 
-    <div class="book-title">
-      <p>Title</p>
-      <span><%= book.title %></span>
-    </div>
+    <% @books.each do |book| %>
+      <tr>
+        <td class="user-icon">
+          <span>icon</span>
+        </td>
 
-      <div class="book-opinion">
-      <p>Opinion</p>
-    <span><%= book.body %></span>
-    </div>
-  <% end %>
+        <td class="book-title">
+          <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
+        </td>
+
+        <td class="book-opinion">
+          <span><%= book.body %></span>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
