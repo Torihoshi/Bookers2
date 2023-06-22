@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   #データの一覧を表示する
   def index
     @books = Book.all
-    
+
   end
 
   #データの内容（詳細）を表示する
@@ -38,7 +38,7 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = "Book was successfully updated."
+      flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@book.id)
     else
       render :edit

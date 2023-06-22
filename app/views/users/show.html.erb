@@ -1,13 +1,55 @@
-<div class="flash-message">
-  <%= flash[:notice] %>
-</div>
-
 <h1>(users/show.html)</h1>
 
-<div class="user-info">
-  <%= render 'user-info', user: @user %>
+<!-- フラッシュメッセージ表示 -->
+<div>
+  <p class="notice"><%= flash[:notice] %></p>
 </div>
 
-<div class="new-book">
-  <%= render 'new-book', book: @book %>
+<div class="container">
+  <!--ユーザー情報-->
+  <div class="user-info">
+    <!--</%= render 'user-info', user: @user %>-->
+    <h2>User info</h2>
+    <%= image_tag @user.get_profile_image(100,100) %>
+
+    <table class="info-table">
+      <tr>
+        <td>
+          <p>name</p>
+        </td>
+
+        <td>
+          <p><%= @user.name %></p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>introduction</p>
+        </td>
+
+        <td>
+          <p><%= @user.introduction %></p>
+        </td>
+      </tr>
+    </table>
+
+    <div>
+      <% if @user.id == current_user.id %>
+        <%= link_to "edit", edit_user_path %>
+      <% end %>
+    </div>
+  </div>
+
+  <!--新規投稿-->
+  <div class="new-book">
+    <%= render 'new-book', book: @book %> <!--部分テンプレート-->
+  </div>
+
+  <!--投稿一覧-->
+  <div class="book-index">
+    <h2>Books</h2>
+    <p>aaa</p>
+  </div>
+
 </div>

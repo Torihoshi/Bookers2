@@ -1,5 +1,28 @@
 @use '~bootstrap/scss/bootstrap';
 
+.container{
+  background-color: #ffffe0;
+}
+.user-info{
+  background-color: #e6e6fa;
+}
+.info-table{
+  background-color: #b0c4de;
+}
+.new-book{
+  background-color: #f5deb3;
+}
+.book-index{
+  background-color: #d2b48c;
+}
+.user-index{
+  background-color: #db7093;
+}
+.book-detail{
+  background-color: #db7093;
+}
+
+
 // Header
 .nav-bar-brand {
   font-size: 20px;

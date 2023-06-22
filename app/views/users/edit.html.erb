@@ -1,13 +1,52 @@
-<h2>User info</h2>
-<%= form_with model: @user do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName" %>
+<!-- フラッシュメッセージ表示 -->
+<div>
+  <p class="notice"><%= flash[:notice] %></p>
+</div>
 
-  <label for="inputImage">Image</label>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+<div class="container">
+  <h2>User info</h2>
 
-  <label for="inputIntro">Introduction</label>
-  <%= f.text_area :introduction, rows:"3" %>
+  <!-- エラーメッセージ -->
+  <!--<div class="error-box">-->
+  <!--  </% if @book.errors.any? %>-->
+  <!--    <h3></%= @book.errors.count %> errors prohibited this book from being saved:</h3>-->
+  <!--    <div class="error-message">-->
+  <!--      <ul>-->
+  <!--        </% @book.errors.full_messages.each do |message| %>-->
+  <!--          <li></%= message %></li>-->
+  <!--        </% end %>-->
+  <!--      </ul>-->
+  <!--    </div>-->
+  <!--  </% end %>-->
+  <!--</div>-->
 
-  <%= f.submit "Update User" %>
-<% end %>
+  <!-- 投稿編集 -->
+  <div class="field">
+    <%= form_with model: @user do |f| %>
+      <div class="form">
+        <label for="inputName">Name</label>
+          <div class="input-box">
+            <%= f.text_field :name, autofocus: true, id:"inputName" %>
+          </div>
+      </div>
+
+      <div class="form">
+        <label for="inputImage">Image</label>
+        <div>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+        </div>
+      </div>
+
+      <div class="form">
+        <label for="inputIntro">Introduction</label>
+          <div class="input-box">
+          <%= f.text_area :introduction, rows:"3" %>
+        </div>
+      </div>
+
+      <div class="form">
+        <%= f.submit "Update User", class: 'submit-btn' %>
+      </div>
+    <% end %>
+
+</div>

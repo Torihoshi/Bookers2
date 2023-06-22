@@ -1,49 +1,57 @@
 <h1>(books/index.html)</h1>
 
-<!--ユーザー情報-->
-<div class="user-info">
-  <h1>User info</h1>
-  <p>ユーザー情報</p>
+<!-- フラッシュメッセージ表示 -->
+<div>
+  <p class="notice"><%= flash[:notice] %></p>
 </div>
 
-<!--新規投稿-->
-<div class="new-book">
-  <h1>New Book</h1>
-  <%= form_with model: @book, method: :GET do |f| %>
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-</div>
+<div class="container">
+  <!--ユーザー情報-->
+  <div class="user-info">
+    <h1>User info</h1>
+    <p>ユーザー情報</p>
+  </div>
 
-<!--投稿一覧-->
-<div class="book-index">
-  <h1>Books</h1>
-  <table class="book-table">
-    <tr>
-      <th>Icon</th>
-      <th>Title</th>
-      <th>Opinion</th>
-    </tr>
-
-    <% @books.each do |book| %>
-      <tr>
-        <td class="user-icon">
-          <span>icon</span>
-        </td>
-
-        <td class="book-title">
-          <%= link_to book_path(book.id) do %>
-            <%= book.title %>
-          <% end %>
-        </td>
-
-        <td class="book-opinion">
-          <span><%= book.body %></span>
-        </td>
-      </tr>
+  <!--新規投稿-->
+  <div class="new-book">
+    <h1>New Book</h1>
+    <%= form_with model: @book, method: :GET do |f| %>
+      <h4>Title</h4>
+        <%= f.text_field :title %>
+      <h4>Opinion</h4>
+        <%= f.text_area :body %>
+      <%= f.submit 'Create Book' %>
     <% end %>
-  </table>
+  </div>
+
+  <!--投稿一覧-->
+  <div class="book-index">
+    <h1>Books</h1>
+    <table class="book-table">
+      <tr>
+        <th>Icon</th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+
+      <% @books.each do |book| %>
+        <tr>
+          <td class="user-icon">
+            <span>icon</span>
+          </td>
+
+          <td class="book-title">
+            <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+            <% end %>
+          </td>
+
+          <td class="book-opinion">
+            <span><%= book.body %></span>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
 </div>

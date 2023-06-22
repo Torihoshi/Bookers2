@@ -5,45 +5,55 @@
   <p class="notice"><%= flash[:notice] %></p>
 </div>
 
-<!--ユーザー情報-->
-<div class="user-info">
-  <h1>User info</h1>
-  <p>ユーザー情報</p>
-</div>
+<div class="container">
+  <!--ユーザー情報-->
+  <div class="user-info">
+    <h1>User info</h1>
+    <p>ユーザー情報</p>
+  </div>
 
-<!--新規投稿-->
-<div class="new-book">
-  <h1>New Book</h1>
-  <%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-</div>
+  <!--新規投稿-->
+  <div class="new-book">
+    <h1>New Book</h1>
+    <%= form_with model: @book do |f| %>
+      <h4>Title</h4>
+        <%= f.text_field :title %>
+      <h4>Opinion</h4>
+        <%= f.text_area :body %>
+      <%= f.submit 'Create Book' %>
+    <% end %>
+  </div>
 
-<!-- 投稿詳細 -->
-<div class="book-detail">
-  <h1>Book detail</h1>
-  <table class="book-table">
-    <tr>
-      <td class="user-icon">
-        <span>icon</span>
-        <%= link_to book_path(@book.id) do %>
-          <%= @book.id %>
-        <% end %>
-      </td>
+  <!-- 投稿詳細 -->
+  <div class="book-detail">
+    <h1>Book detail</h1>
+    <table class="book-table">
+      <tr>
+        <td class="user-icon">
+          <span>icon</span>
+          <%= link_to book_path(@book.id) do %>
+            <%= @book.id %>
+          <% end %>
+        </td>
 
-      <td class="book-title">
-        <%= link_to book_path(@book.id) do %>
-          <%= @book.title %>
-        <% end %>
-      </td>
+        <td class="book-title">
+          <%= link_to book_path(@book.id) do %>
+            <%= @book.title %>
+          <% end %>
+        </td>
 
-      <td class="book-opinion">
-        <span><%= @book.body %></span>
-      </td>
-    </tr>
-  </table>
+        <td class="book-opinion">
+          <span><%= @book.body %></span>
+        </td>
+
+        <td>
+          <%= link_to 'Edit', edit_book_path(@book.id), class:"edit-btn" %>
+        </td>
+
+        <td>
+          <%= link_to 'Destroy', destroy_book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?", class:"destroy-btn" %>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
