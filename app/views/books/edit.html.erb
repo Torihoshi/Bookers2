@@ -1,3 +1,5 @@
+
+
 <!-- フラッシュメッセージ表示 -->
 <div>
   <p class="notice"><%= flash[:notice] %></p>
@@ -22,7 +24,7 @@
 
   <!-- 投稿編集 -->
   <div class="field">
-    <%= form_with model: @book do |f| %>
+    <%= form_with model: @book, url: book_path(params[:id]), method: :patch do |f| %>
       <div class="form">
         <label>Title</label>
         <div class="input-box">

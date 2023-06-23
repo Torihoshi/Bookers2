@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :is_matching_login_user, only: [:edit, :update]
   #データの新規作成フォームを表示する
   def new
     @book = Book.new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   #データを更新するためのフォームを表示する
   def edit
-    @user = User.find(params[:id])
+      @user = User.find(params[:id])
   end
 
   #データを更新する
@@ -47,5 +47,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to post_images_path
+    end
+  end
 
 end

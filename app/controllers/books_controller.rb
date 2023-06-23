@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  before_action :is_matching_login_user, only: [:edit, :update]
   #データの新規作成フォームを表示する
   def new
     @book = Book.new
@@ -11,15 +11,16 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
       flash[:notice] = "You have created book successfully."
-      redirect_to books_path(@book.id)
+      redirect_to books_path(@book)
     else
-      @book = Book.all
+
       render :show
     end
   end
 
-  #データの一覧を表示する 複数なのでsをつけてる!
+  #データの一覧を表示する
   def index
+    @book = Book.new
     @books = Book.all
     @user = current_user
   end
@@ -58,6 +59,13 @@ private
   #　ストロングパラメータ
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to post_images_path
+    end
   end
 
 end
