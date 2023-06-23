@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   #データを更新する
   def update
     @user = User.find(params[:id])
-    if @user = User.update(user_params)
+    if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
       redirect_to user_path(@user)
     else

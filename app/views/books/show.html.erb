@@ -29,10 +29,12 @@
         <table class="book-table">
           <tr>
             <td class="user-icon">
-              <span><%= image_tag @book.user.get_profile_image(80,80) %></span>
-              <%= link_to book_path(@book.id) do %>
-                <%= @book.id %>
-              <% end %>
+              <a>
+                <%= link_to user_path(@book.id) do %>
+                  <%= image_tag @book.user.get_profile_image(80,80) %>
+                  <%= @book.user.name %>
+                <% end %>
+              </a>
             </td>
 
             <td class="book-title">
@@ -44,14 +46,14 @@
             <td class="book-opinion">
               <span><%= @book.body %></span>
             </td>
-
+<% if @book.user_id == current_user.id %>
             <td>
               <%= link_to 'Edit', edit_book_path(@book.id), class:"edit-btn" %>
             </td>
-
             <td>
               <%= link_to 'Destroy', destroy_book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?", class:"destroy-btn" %>
             </td>
+<% end %>
           </tr>
         </table>
       </div>

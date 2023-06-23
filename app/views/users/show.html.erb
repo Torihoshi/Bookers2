@@ -37,7 +37,7 @@
           <% @books.each do |book| %>
             <tr>
               <td class="user-icon">
-                <!-- ユーザーのアイコンを表示 -->
+                <%= image_tag book.user.get_profile_image(80,80) %><!-- ユーザーのアイコンを表示 -->
               </td>
 
               <td class="book-title">
