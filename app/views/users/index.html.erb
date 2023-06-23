@@ -1,76 +1,55 @@
 <h1>(users/index.html)</h1>
+
 <!-- フラッシュメッセージ表示 -->
 <div>
   <p class="notice"><%= flash[:notice] %></p>
 </div>
 
-<div class="container">
-  <!--ユーザー情報-->
-  <div class="user-info">
-    <!--</%= render 'user-info', user: @user %>-->
-    <h1>User info</h1>
-    <!--</%= image_tag @user.get_profile_image(100,100) %>-->
+<!--左部分-->
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <!--ユーザー情報-->
+      <div class="user-info">
+        <h1>User-info</h1><!--</%= render 'user-info', user: @user %>-->
+      </div>
 
-    <!--<table class="user-info">-->
-    <!--  <tr>-->
-    <!--    <td>-->
-    <!--      <p>name</p>-->
-    <!--    </td>-->
-    <!--    <td>-->
-    <!--      <p></%= @user.name %></p>-->
-    <!--    </td>-->
-    <!--  </tr>-->
-    <!--  <tr>-->
-    <!--    <td>-->
-    <!--      <p>introduction</p>-->
-    <!--    </td>-->
-    <!--    <td>-->
-    <!--      <p></%= @user.introduction %></p>-->
-    <!--    </td>-->
-    <!--  </tr>-->
-    <!--</table>-->
-    <!--<div>-->
-    <!--  </% if @user.id == current_user.id %>-->
-    <!--    </%= link_to "edit", edit_user_path %>-->
-    <!--  </% end %>-->
-    <!--</div>-->
+      <!--新規投稿-->
+      <div class="new-book">
+        <%= render 'new-book', book: @book %> <!--部分テンプレート-->
+      </div>
+    </div>
+
+<!--右部分-->
+    <div class="col-md-8 offset-md-1">
+      <!--ユーザー一覧-->
+      <div class="table">
+        <h2>Users</h2>
+        <table class="user-table">
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+
+          <% @users.each do |info| %>
+            <tr>
+              <td class="user-icon">
+                <%= image_tag info.get_profile_image(80,80) %> <!-- ユーザーのアイコンを表示 -->
+              </td>
+
+              <td class="user-name">
+                <%= info.name %> <!-- ユーザーの名前を表示 -->
+              </td>
+
+              <td class="show-link">
+                <%= link_to "Show", user_path(info) %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
   </div>
-
-  <!--新規投稿-->
-  <div class="new-book">
-    <%= render 'new-book', book: @book %> <!--部分テンプレート-->
-  </div>
-
-  <!--ユーザー一覧-->
-  <div class="user-index">
-    <h1>Users</h1>
-    <table class="user-table">
-      <tr>
-        <th>image</th>
-        <th>name</th>
-        <th></th>
-      </tr>
-
-    <!--  </% @books.each do |book| %>-->
-        <tr>
-          <td class="user-icon">
-            <p>image</p>
-          </td>
-
-          <td class="book-title">
-            <p>name</p>
-    <!--        </%= link_to book_path(book.id) do %>-->
-    <!--          </%= book.title %>-->
-    <!--        </% end %>-->
-          </td>
-
-          <td class="book-opinion">
-            <p>show</p>
-    <!--        <span></%= book.body %></span>-->
-          </td>
-        </tr>
-    <!--  </% end %>-->
-    </table>
-  </div>
-
 </div>

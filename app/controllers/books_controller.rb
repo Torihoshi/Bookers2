@@ -11,14 +11,14 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
       flash[:notice] = "Book was successfully created."
-      redirect_to books_path(@book.id)
+      redirect_to books_path(@book)
     else
       @book = Book.all
-      render :index
+      render :new
     end
   end
 
-  #データの一覧を表示する
+  #データの一覧を表示する 複数なのでsをつけてる!
   def index
     @books = Book.all
 
@@ -54,7 +54,7 @@ class BooksController < ApplicationController
   end
 
 private
-
+  #　ストロングパラメータ
   def book_params
     params.require(:book).permit(:title, :body)
   end

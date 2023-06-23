@@ -31,9 +31,11 @@ end
                 #                          PUT    /users(.:format)                                                                                  devise/registrations#update
                 #                          DELETE /users(.:format)                                                                                  devise/registrations#destroy
                 #                          POST   /users(.:format)                                                                                  devise/registrations#create
+                
                 #                homes_top GET    /homes/top(.:format)                                                                              homes#top
                 #                     root GET    /                                                                                                 homes#top
                 #                    about GET    /home/about(.:format)                                                                             home#about
+                
                 #                    books GET    /books(.:format)                                                                                  books#index
                 #                          POST   /books(.:format)                                                                                  books#create
                 #                 new_book GET    /books/new(.:format)                                                                              books#new
@@ -42,8 +44,10 @@ end
                 #                          PATCH  /books/:id(.:format)                                                                              books#update
                 #                          PUT    /books/:id(.:format)                                                                              books#update
                 #                          DELETE /books/:id(.:format)                                                                              books#destroy
+                
                 #                    users GET    /users(.:format)                                                                                  users#index
                 #                edit_user GET    /users/:id/edit(.:format)                                                                         users#edit
                 #                     user GET    /users/:id(.:format)                                                                              users#show
                 #                          PATCH  /users/:id(.:format)                                                                              users#update
                 #                          PUT    /users/:id(.:format)                                                                              users#update
+                

@@ -5,51 +5,55 @@
   <p class="notice"><%= flash[:notice] %></p>
 </div>
 
-<div class="container">
-  <!--ユーザー情報-->
-  <div class="user-info">
-    <!--</%= render 'user-info', user: @user %>-->
-    <h2>User info</h2>
-    <%= image_tag @user.get_profile_image(100,100) %>
+<!--左部分-->
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <!--ユーザー情報-->
+      <div class="user-info">
+        <%= render 'user-info', user: @user %> <!--部分テンプレート-->
+      </div>
 
-    <table class="info-table">
-      <tr>
-        <td>
-          <p>name</p>
-        </td>
-
-        <td>
-          <p><%= @user.name %></p>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <p>introduction</p>
-        </td>
-
-        <td>
-          <p><%= @user.introduction %></p>
-        </td>
-      </tr>
-    </table>
-
-    <div>
-      <% if @user.id == current_user.id %>
-        <%= link_to "edit", edit_user_path %>
-      <% end %>
+      <!--新規投稿-->
+      <div class="new-book">
+        <%= render 'new-book', book: @book %> <!--部分テンプレート-->
+      </div>
     </div>
-  </div>
 
-  <!--新規投稿-->
-  <div class="new-book">
-    <%= render 'new-book', book: @book %> <!--部分テンプレート-->
-  </div>
+<!--右部分-->
+    <div class="col-md-8 offset-md-1">
+      <!--投稿一覧-->
+      <div class="table table-hover table-inverse">
+        <h2>Books</h2>
+        <table class="book-table">
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th></th>
+          </tr>
 
-  <!--投稿一覧-->
-  <div class="book-index">
-    <h2>Books</h2>
-    <p>aaa</p>
-  </div>
+          <% @books.each do |book| %>
+            <tr>
+              <td class="user-icon">
+                <!-- ユーザーのアイコンを表示 -->
+              </td>
 
+              <td class="book-title">
+                <%= link_to book_path(book.id) do %>
+                  <%= book.title %>
+                <% end %>
+              </td>
+
+              <td class="book-opinion">
+                <span><%= book.body %></span>
+              </td>
+              <td></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </div>
