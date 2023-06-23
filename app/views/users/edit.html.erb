@@ -1,3 +1,17 @@
+  <!-- エラーメッセージ -->
+  <div class="error-box">
+    <% if @user.errors.any? %>
+      <h3><%= @user.errors.count %> error prohibited this obj from being saved:</h3>
+      <div class="error-message">
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
 <!-- フラッシュメッセージ表示 -->
 <div>
   <p class="notice"><%= flash[:notice] %></p>
@@ -6,19 +20,6 @@
 <div class="container">
   <h2>User info</h2>
 
-  <!-- エラーメッセージ -->
-  <!--<div class="error-box">-->
-  <!--  </% if @book.errors.any? %>-->
-  <!--    <h3></%= @book.errors.count %> errors prohibited this book from being saved:</h3>-->
-  <!--    <div class="error-message">-->
-  <!--      <ul>-->
-  <!--        </% @book.errors.full_messages.each do |message| %>-->
-  <!--          <li></%= message %></li>-->
-  <!--        </% end %>-->
-  <!--      </ul>-->
-  <!--    </div>-->
-  <!--  </% end %>-->
-  <!--</div>-->
 
   <!-- 投稿編集 -->
   <div class="field">

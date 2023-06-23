@@ -33,8 +33,7 @@ class UsersController < ApplicationController
       flash[:notice] = "You have updated user successfully."
       redirect_to user_path(@user)
     else
-            flash[:notice] = "失敗してるよ"
-            render :edit
+      render :edit
     end
   end
 
