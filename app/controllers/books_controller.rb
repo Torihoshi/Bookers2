@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   #データの一覧を表示する 複数なのでsをつけてる!
   def index
     @books = Book.all
-
+    @user = current_user
   end
 
   #データの内容（詳細）を表示する
