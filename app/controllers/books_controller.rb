@@ -27,6 +27,8 @@ class BooksController < ApplicationController
   #データの内容（詳細）を表示する
   def show
     @book = Book.find(params[:id])
+    @user = User.find(params[:id])
+
   end
 
   #データを更新するためのフォームを表示する
