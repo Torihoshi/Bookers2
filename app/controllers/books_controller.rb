@@ -26,6 +26,7 @@ class BooksController < ApplicationController
   #データの内容（詳細）を表示する
   def show
       @book = Book.find(params[:id])
+      @book_new = Book.new
   end
 
   private

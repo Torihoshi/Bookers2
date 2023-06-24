@@ -1,0 +1,16 @@
+<!--新規投稿機能-->
+  <%= form_with model: book, url: books_path do |f| %>
+    <div class="field">
+      <p>Title</p>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <p>Opinion</p>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="field">
+      <%= f.submit 'Create Book', class:"btn btn-success" %>
+    </div>
+  <% end %>
