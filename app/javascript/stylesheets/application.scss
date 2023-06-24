@@ -1,24 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 
 
-.user-info{
-  background-color: #e6e6fa;
-}
-.info-table{
-  background-color: #b0c4de;
-}
-.new-book{
-  background-color: #f5deb3;
-}
-.book-index{
-  background-color: #d2b48c;
-}
-.user-index{
-  background-color: #db7093;
-}
-.book-detail{
-  background-color: #db7093;
-}
 
 
 // Header
@@ -88,8 +70,24 @@
 .table {
     width: 100%;
 }
+.form {
+  width: 100%;
+}
+.edit-btn {
+  width: 100%;
+}
+.user-icon {
+  display: block;
+}
+.btn-block {
+  width: 100%;
+}
 
-
+.edit-btn {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
 
 // Footer
 footer {
