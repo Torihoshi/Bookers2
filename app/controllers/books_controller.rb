@@ -8,7 +8,7 @@ class BooksController < ApplicationController
        @book.user_id = current_user.id
        @books = Book.all
     if @book.save
-       redirect_to books_path
+       redirect_to book_path(@book.id)
        flash[:notice] = "You have created book successfully."
     else
       flash[:notice] = "error! 保存に失敗"

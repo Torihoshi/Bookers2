@@ -1,16 +1,16 @@
   <!-- エラーメッセージ -->
-  <!--<div class="error-box">-->
-  <!--  </% if @user.errors.any? %>-->
-  <!--    <h3></%= @user.errors.count %> error prohibited this obj from being saved:</h3>-->
-  <!--    <div class="error-message">-->
-  <!--      <ul>-->
-  <!--        </% @user.errors.full_messages.each do |message| %>-->
-  <!--          <li></%= message %></li>-->
-  <!--        </% end %>-->
-  <!--      </ul>-->
-  <!--    </div>-->
-  <!--  </% end %>-->
-  <!--</div>-->
+  <div class="error-box">
+    <% if @user.errors.any? %>
+      <h3><%= @user.errors.count %> error prohibited this obj from being saved:</h3>
+      <div class="error-message">
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
 
 <!-- フラッシュメッセージ表示 -->
 <div>
