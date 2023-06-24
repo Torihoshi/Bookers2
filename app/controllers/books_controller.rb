@@ -7,6 +7,7 @@ class BooksController < ApplicationController
        @book = Book.new(book_params)
        @book.user_id = current_user.id
        @books = Book.all
+       @book_new = Book.new
     if @book.save
        redirect_to book_path(@book.id)
        flash[:notice] = "You have created book successfully."
@@ -19,6 +20,7 @@ class BooksController < ApplicationController
 
   #データの一覧を表示する
   def index
+      @book = Book.new
       @book_new = Book.new
       @books = Book.all
   end
