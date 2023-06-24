@@ -2,12 +2,12 @@
   <%= form_with model: book, url: books_path do |f| %>
     <div class="field">
       <p>Title</p>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class: "form" %>
     </div>
 
     <div class="field">
       <p>Opinion</p>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, class: "form" %>
     </div>
 
     <div class="field">
