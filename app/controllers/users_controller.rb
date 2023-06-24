@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   #データの内容（詳細）を表示する
   def show
       @user = User.find(params[:id])
+      @book_new = Book.new
       # @books = @user.books
       # @book = Book.new #新規投稿用
   end
