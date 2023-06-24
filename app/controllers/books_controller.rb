@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
-  #データの新規作成フォームを表示する
-  def new
-      @book = Book.new
-  end
+  # #データの新規作成フォームを表示する
+  # def new
+  #     @book = Book.new
+  # end
 
   #データを追加（保存）する
   def create
@@ -12,14 +13,15 @@ class BooksController < ApplicationController
 
     if @book.save
        redirect_to books_path
+       flash[:notice] = "You have created book successfully."
     else
-       render :new
+       render index
     end
   end
 
-  #データの一覧を表示する 複数なのでsをつけてる!
+  #データの一覧を表示する
   def index
-      @book = Book.new
+      @book_new = Book.new
       @books = Book.all
   end
 
@@ -37,6 +39,7 @@ class BooksController < ApplicationController
   #データを更新する
   def update
        @book = Book.find(params[:id])
+
     if @book.update(book_params)
        flash[:notice] = "You have updated book successfully."
        redirect_to book_path(@book)
@@ -59,11 +62,15 @@ class BooksController < ApplicationController
   def book_params
       params.require(:book).permit(:title, :body)
   end
+
+  def is_matching_login_user
+    book = Book.find(params[:id])
+    unless book.user_id == current_user.id
+      redirect_to books_path
+    end
+  end
+
 end
-
-
-
-
 
   #データを追加（保存）する
   # def create
