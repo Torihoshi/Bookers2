@@ -29,6 +29,31 @@ class BooksController < ApplicationController
       @book_new = Book.new
   end
 
+  #データを更新するためのフォームを表示する
+  def edit
+      @book = Book.find(params[:id])
+  end
+
+  #データを更新する
+  def update
+       @book = Book.find(params[:id])
+    if @book.update(book_params)
+       flash[:notice] = "You have updated book successfully."
+       redirect_to book_path(@book)
+    else
+       render :edit
+    end
+  end
+
+  #データを削除する
+  def destroy
+      @book = Book.find(params[:id])
+      @book.destroy
+      flash[:notice] = "Book was successfully destroyed."
+      redirect_to books_path
+  end
+
+
   private
   #ストロングパラメータ
   def book_params
