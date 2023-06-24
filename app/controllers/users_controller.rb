@@ -1,26 +1,18 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
-  #データの新規作成フォームを表示する
-  # def new
-  #   @book = Book.new
-  # end
 
   #データの一覧を表示する
   def index
     @users = User.all #ユーザー情報を取得する
     @user = User.all
     @book_new = Book.new
-    # @books = Book.all
-    # @book = Book.new #新規投稿用
   end
 
   #データの内容（詳細）を表示する
   def show
       @user = User.find(params[:id])
       @book_new = Book.new
-      # @books = @user.books
-      # @book = Book.new #新規投稿用
   end
 
   #データを更新するためのフォームを表示する
