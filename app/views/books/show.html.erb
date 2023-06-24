@@ -1,10 +1,15 @@
-<h1><%= @book.title %>の詳細</h1>
+<p>books/show</p>
+<!--左部分-->
+<!--ユーザー表示機能-->
+<h2>User info</h2>
+<%= render 'users/user', user: @book.user %>
 
+<!--新規投稿機能-->
+<h2>New book</h2>
+
+
+<!--右部分-->
 <div class="book">
   <h2><%= @book.title %></h2>
   <p><%= @book.body %></p>
 </div>
-
-<h2>投稿者情報</h2>
-
-<%= render 'users/user', user: @book.user %>

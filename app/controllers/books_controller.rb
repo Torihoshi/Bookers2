@@ -1,35 +1,32 @@
 class BooksController < ApplicationController
 
   #データの新規作成フォームを表示する
-  # def new
-  #     @book = Book.new
-  # end
+  def new
+      @book = Book.new
+  end
 
-  # #データを追加（保存）する
-  # def create
-  #     @book = Book.new(book_params)
-  #     if @book.save
-  #         # 作成に成功した場合、 /books/{book_id} にリダイレクト
-  #         redirect_to book_path(@book.id)
-  #     else
-  #       # 作成に失敗した場合、 /books/new に戻してバリデーションエラーを表示する
-  #         render :new
-  #         # view 側で、 @book.errors を使ってエラーを表示する。
-  #     end
-  # end
+  #データを追加（保存）する
+  def create
+       @book = Book.new(book_params)
+    if @book.save
+       redirect_to book_path
+    else
+       render :new
+    end
+  end
 
-   #データの一覧を表示する 複数なのでsをつけてる!
+  #データの一覧を表示する 複数なのでsをつけてる!
   def index
       @books = Book.all
   end
 
-  # #データの内容（詳細）を表示する
+  #データの内容（詳細）を表示する
   def show
       @book = Book.find(params[:id])
   end
 
-    private
-  #　ストロングパラメータ
+  private
+  #ストロングパラメータ
   def book_params
       params.require(:book).permit(:title, :body)
   end

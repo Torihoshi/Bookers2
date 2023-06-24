@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   #データの一覧を表示する
   def index
     @users = User.all #ユーザー情報を取得する
+    @user = User.all
     # @books = Book.all
     # @book = Book.new #新規投稿用
   end
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
 
 
   private
-
+  #ストロングパラメータ
   def user_params
       params.require(:user).permit(:name, :profile_image, :introduction)
   end

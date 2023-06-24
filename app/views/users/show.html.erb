@@ -1,7 +1,12 @@
-<h1><%= @user.name %>の詳細</h1>
-
+<p>users/show</p>
+<!--左部分-->
+<h2>User info</h2>
 <%= render 'user', user: @user %>
 
+<h2>New book</h2>
+
+
+<!--右部分-->
 <h2>投稿一覧</h2>
 
 <% @user.books.each do |book| %>
