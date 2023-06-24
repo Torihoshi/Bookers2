@@ -8,8 +8,10 @@ class BooksController < ApplicationController
   #データを追加（保存）する
   def create
        @book = Book.new(book_params)
+       @book.user_id = current_user.id
+
     if @book.save
-       redirect_to book_path
+       redirect_to books_path
     else
        render :new
     end
@@ -17,6 +19,7 @@ class BooksController < ApplicationController
 
   #データの一覧を表示する 複数なのでsをつけてる!
   def index
+      @book = Book.new
       @books = Book.all
   end
 
