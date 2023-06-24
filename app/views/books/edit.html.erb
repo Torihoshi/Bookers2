@@ -1,53 +1,51 @@
 
-
-<!-- フラッシュメッセージ表示 -->
-<div>
-  <p class="notice"><%= flash[:notice] %></p>
-</div>
-
 <div class="container">
-  <h1>Editing Book</h1>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Book</h1>
 
-  <!-- エラーメッセージ -->
-  <div class="error-box">
-    <% if @book.errors.any? %>
-      <h3><%= @book.errors.count %> errors prohibited this book from being saved:</h3>
-      <div class="error-message">
-        <ul>
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+      <!-- エラーメッセージ -->
+      <div class="notice">
+        <% if @book.errors.any? %>
+          <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
+          <div class="error-message">
+            <ul>
+              <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+
+      <!-- 投稿編集 -->
+      <div class="field">
+        <%= form_with model: @book, url: book_path(params[:id]), method: :patch do |f| %>
+          <div class="form">
+            <label>Title</label>
+            <div class="input-box">
+              <%= f.text_field :title, autofocus: true %>
+            </div>
+          </div>
+
+          <div class="form">
+            <label>Body</label>
+            <div class="input-box">
+              <%= f.text_area :body %>
+            </div>
+          </div>
+
+          <div class="form">
+            <%= f.submit 'Update Book', class: 'btn btn-success' %>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- リンク -->
+      <%= link_to 'Show', book_path(@book), class: "show_link" %>
+      |
+      <%= link_to 'Back', '/books', class: "back_link" %>
+
+    </div>
   </div>
-
-  <!-- 投稿編集 -->
-  <div class="field">
-    <%= form_with model: @book, url: book_path(params[:id]), method: :patch do |f| %>
-      <div class="form">
-        <label>Title</label>
-        <div class="input-box">
-          <%= f.text_field :title, autofocus: true %>
-        </div>
-      </div>
-
-      <div class="form">
-        <label>Body</label>
-        <div class="input-box">
-          <%= f.text_area :body %>
-        </div>
-      </div>
-
-      <div class="form">
-        <%= f.submit 'Update Book', class: 'btn btn-success' %>
-      </div>
-    <% end %>
-  </div>
-
-  <!-- リンク -->
-  <%= link_to 'Show', book_path(@book), class: "show_link" %>
-  |
-  <%= link_to 'Back', '/books', class: "back_link" %>
-
 </div>
