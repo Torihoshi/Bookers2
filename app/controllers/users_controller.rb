@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all #ユーザー情報を取得する
     @user = User.all
+    @book_new = Book.new
     # @books = Book.all
     # @book = Book.new #新規投稿用
   end
